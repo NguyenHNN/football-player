@@ -1,9 +1,21 @@
-// src/components/Players.js
-
-import React from 'react';
-import { Players } from '../shared/ListOfPlayers';
+import React, { useState } from 'react';
+import { Players as playersList } from '../shared/ListOfPlayers';
+import '../App.css'; // Import CSS từ App.css
 
 function Players() {
+  // Khởi tạo state để lưu thông tin cầu thủ được chọn
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+
+  // Hàm xử lý khi nhấn "Detail"
+  const handleDetailClick = (player) => {
+    setSelectedPlayer(player); // Cập nhật state với cầu thủ được chọn
+  };
+
+  // Hàm đóng modal
+  const handleCloseModal = () => {
+    setSelectedPlayer(null); // Đặt lại state để đóng modal
+  };
+
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
       {/* Header */}
@@ -62,7 +74,7 @@ function Players() {
           maxWidth: '1100px',
           margin: '0 auto'
         }}>
-          {Players.map((player, index) => (
+          {playersList.map((player) => (
             <div key={player.id} style={{
               textAlign: 'center',
               border: '1px solid #e0e0e0',
@@ -101,18 +113,43 @@ function Players() {
               }}>
                 {player.club}
               </p>
-              <span style={{
-                fontSize: '16px',
-                color: '#007bff',
-                fontWeight: '500',
-                cursor: 'pointer'
-              }}>
-                Detail
-              </span>
+              <button
+                onClick={() => handleDetailClick(player)}
+                style={{
+                  fontSize: '16px',
+                  color: '#fff',
+                  backgroundColor: '#007bff',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '5px',
+                  cursor: 'pointer'
+                }}
+              >
+                <a href="#popup1" style={{ color: 'white', textDecoration: 'none' }}>
+                  Detail
+                </a>
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedPlayer && (
+        <div id="popup1" className="overlay">
+          <div className="popup">
+            <h2>{selectedPlayer.name}</h2>
+            <a className="close" href="#" onClick={handleCloseModal}>
+              &times;
+            </a>
+            <div className="content">
+              <img src={selectedPlayer.img} alt={selectedPlayer.name} />
+              <p><strong>Club:</strong> {selectedPlayer.club}</p>
+              <p><strong>Info:</strong> {selectedPlayer.info}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <div style={{
