@@ -2,14 +2,14 @@
 
 import './App.css';
 import Navigation from './components/Navigation';
-import Main from './components/Main';
+import Players from './components/Players';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      <Main />
+      <Players />
       <Footer />
     </div>
   );
