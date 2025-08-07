@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
+import './Navigation.css';
 
 function Navigation() {
   const { theme, toggle, dark } = useContext(ThemeContext);
@@ -18,42 +20,34 @@ function Navigation() {
       </div>
       
       <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <a href="#" style={{ 
-          color: theme.color, 
-          textDecoration: 'none',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          transition: 'background-color 0.3s'
-        }} onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>
+        <Link
+          to="/"
+          style={{ 
+            color: theme.color, 
+            textDecoration: 'none',
+            padding: '8px 16px',
+            borderRadius: '4px',
+            transition: 'background-color 0.3s'
+          }}
+          onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'}
+          onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
+        >
           Home
-        </a>
-        <a href="#" style={{ 
-          color: theme.color, 
-          textDecoration: 'none',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          transition: 'background-color 0.3s'
-        }} onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>
-          Players
-        </a>
-        <a href="#" style={{ 
-          color: theme.color, 
-          textDecoration: 'none',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          transition: 'background-color 0.3s'
-        }} onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>
-          Teams
-        </a>
-        <a href="#" style={{ 
-          color: theme.color, 
-          textDecoration: 'none',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          transition: 'background-color 0.3s'
-        }} onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>
-          About
-        </a>
+        </Link>
+        <Link
+          to="/contact"
+          style={{ 
+            color: theme.color, 
+            textDecoration: 'none',
+            padding: '8px 16px',
+            borderRadius: '4px',
+            transition: 'background-color 0.3s'
+          }}
+          onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'}
+          onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
+        >
+          Contact
+        </Link>
         <a
           className="switch-mode"
           href="#"
