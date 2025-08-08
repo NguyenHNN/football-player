@@ -10,61 +10,44 @@ function Navigation() {
     <nav style={{
       backgroundColor: theme.backgroundColor,
       color: theme.color,
-      padding: '15px 20px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center'
+      padding: '0 20px'
     }}>
-      <div style={{ fontSize: '20px', fontWeight: 'bold', color: theme.color }}>
-        🏆 Famous Football Players
-      </div>
-      
-      <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <Link
-          to="/"
-          style={{ 
-            color: theme.color, 
-            textDecoration: 'none',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            transition: 'background-color 0.3s'
-          }}
-          onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'}
-          onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
-        >
-          Home
+      <div className="nav-wrapper">
+        <Link to="/" className="brand-logo" style={{ color: theme.color }}>
+          🏆 Famous Football Players
         </Link>
-        <Link
-          to="/contact"
-          style={{ 
-            color: theme.color, 
-            textDecoration: 'none',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            transition: 'background-color 0.3s'
-          }}
-          onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'}
-          onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
-        >
-          Contact
-        </Link>
-        <a
-          className="switch-mode"
-          href="#"
-          onClick={toggle}
-          style={{
-            color: theme.color,
-            textDecoration: 'none',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            transition: 'background-color 0.3s'
-          }}
-          onMouseOver={(e) => e.target.style.backgroundColor = dark ? '#555' : '#ddd'}
-          onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
-          data-testid="toggle-theme-btn"
-        >
-          Switch to {!dark ? 'Dark' : 'Light'} mode
-        </a>
+        <ul className="right hide-on-med-and-down">
+          <li>
+            <Link to="/" style={{ color: theme.color }}>
+              <i className="material-icons left">home</i>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" style={{ color: theme.color }}>
+              <i className="material-icons left">email</i>
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" style={{ color: theme.color }}>
+              <i className="material-icons left">info</i>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/news" style={{ color: theme.color }}>
+              <i className="material-icons left">article</i>
+              News
+            </Link>
+          </li>
+          <li onClick={toggle}>
+            <span style={{ color: theme.color, cursor: 'pointer' }}>
+              <i className="material-icons left">{dark ? 'brightness_high' : 'brightness_4'}</i>
+              Switch to {dark ? 'Light' : 'Dark'} mode
+            </span>
+          </li>
+        </ul>
       </div>
     </nav>
   );
