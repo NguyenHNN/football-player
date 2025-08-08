@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 const themes = {
   dark: {
@@ -28,17 +28,27 @@ function ThemeProvider({ children }) {
     setDark(isDark);
   }, []); // Empty dependency array to run only on mount
 
-  // To toggle between dark and light modes
-  const toggle = () => {
+  // Memoize theme object to prevent unnecessary re-renders
+  const theme = useMemo(() => {
+    return dark ? themes.dark : themes.light;
+  }, [dark]);
+
+  // Memoize toggle function
+  const toggle = useCallback(() => {
     const isDark = !dark;
     localStorage.setItem('dark', JSON.stringify(isDark));
     setDark(isDark);
-  };
+  }, [dark]);
 
-  const theme = dark ? themes.dark : themes.light;
+  // Memoize context value
+  const contextValue = useMemo(() => ({
+    theme,
+    dark,
+    toggle
+  }), [theme, dark, toggle]);
 
   return (
-    <ThemeContext.Provider value={{ theme, dark, toggle }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

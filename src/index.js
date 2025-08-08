@@ -4,6 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { ThemeProvider } from './components/ThemeContext';
 import './index.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css';
+
+// Initialize Materialize CSS
+M.AutoInit();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

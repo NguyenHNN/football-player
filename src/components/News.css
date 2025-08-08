@@ -1,0 +1,20 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: inherit;
+  }
+  
+  .tabs .tab a {
+    color: inherit;
+  }
+  
+  .tabs .tab a:hover,
+  .tabs .tab a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
+  }

@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
 import { data } from '../shared/ListOfPlayers';
 import PlayersPresentation from './PlayersPresentation';
-import './Players.css';
+import { Container } from 'react-materialize';
 
 function Players() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: theme.backgroundColor, color: theme.color }}>
+    <div style={{ backgroundColor: theme.backgroundColor, color: theme.color, minHeight: '100vh', padding: '40px' }}>
       {/* Header */}
       <div style={{
         display: 'flex',
@@ -47,8 +46,7 @@ function Players() {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div style={{ padding: '40px' }}>
+      <Container style={{ padding: '40px' }}>
         <h1 style={{ 
           fontSize: '24px', 
           fontWeight: 'bold', 
@@ -58,7 +56,7 @@ function Players() {
           Final result:
         </h1>
         <PlayersPresentation players={data} />
-      </div>
+      </Container>
     </div>
   );
 }
